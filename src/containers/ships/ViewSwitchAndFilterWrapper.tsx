@@ -1,6 +1,7 @@
 import { Tabs } from "@mantine/core";
 import React, { useState } from "react";
 import { SHIP_VIEWS } from "../../types";
+import { ShipFilter } from "./ShipFilter";
 import { useShipStyles } from "./styles";
 
 type Props = {
@@ -25,7 +26,9 @@ export const ViewSwitchAndFilterWrapper = ({ views }: Props) => {
             <Tabs.Tab value={view.key}>{view.key}</Tabs.Tab>
           ))}
         </Tabs.List>
-        <div className={classes.filter}>filter</div>
+        <div className={classes.filter}>
+          <ShipFilter />
+        </div>
       </div>
       {views.map((view) => (
         <Tabs.Panel value={view.key}>{view.component}</Tabs.Panel>

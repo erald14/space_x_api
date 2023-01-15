@@ -1,10 +1,11 @@
-import { Card, Image, Text, Group, RingProgress } from "@mantine/core";
+import { Card, Image, Text, Group, RingProgress, Badge } from "@mantine/core";
 import { useGalleryCardStyles } from "./styles";
 
 interface GalleryCardProps {
   image: string;
   title: string;
-  description: string;
+  description?: string;
+  status: boolean;
   stats: {
     title: string;
     value: string;
@@ -16,6 +17,7 @@ export function GalleryCard({
   title,
   description,
   stats,
+  status,
 }: GalleryCardProps) {
   const { classes } = useGalleryCardStyles();
 
@@ -33,16 +35,26 @@ export function GalleryCard({
   return (
     <Card withBorder p="lg" className={classes.card}>
       <Card.Section>
-        <Image src={image} alt={title} height={100} />
+        <Image
+          style={{ objectFit: "fill" }}
+          src={image}
+          alt={title}
+          height={200}
+          withPlaceholder
+        />
       </Card.Section>
 
       <Group position="apart" mt="xl">
-        <Text size="sm" weight={700} className={classes.title}>
+        <Text size="xs" weight={700} className={classes.title}>
           {title}
         </Text>
         <Group spacing={5}>
           <Text size="xs" color="dimmed">
-            80% completed
+            {status ? (
+              <Badge color="green">Active</Badge>
+            ) : (
+              <Badge color="red">Inactive</Badge>
+            )}
           </Text>
           <RingProgress size={18} sections={[{ value: 80, color: "blue" }]} />
         </Group>

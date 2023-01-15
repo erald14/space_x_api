@@ -1,20 +1,36 @@
 import React from "react";
 import { InfiniteScroll, GalleryCard } from "../../components";
 import { IShip } from "../../types";
+import { getStats } from "./ship-utils";
+import { useShipStyles } from "./styles";
 
 type ShipListViewProps = {
+  fetchedAllShips: boolean;
   ships: IShip[] | undefined;
+  fetchData: () => void;
 };
 
-export const ShipListView = ({ ships = [] }: ShipListViewProps) => {
+export const ShipListView = ({
+  ships = [],
+  fetchData,
+  fetchedAllShips,
+}: ShipListViewProps) => {
+  const { classes } = useShipStyles();
   return (
     <InfiniteScroll
-      items={ships.map((el) => (
-        <GalleryCard image={""} title={""} description={""} stats={[]} />
+      hasMore={!fetchedAllShips}
+      items={ships.map((ship) => (
+        <div className={classes.listItemWrapper}>
+          <GalleryCard
+            status={ship.active}
+            image={ship.image}
+            title={ship.name}
+            description={ship.type + ""}
+            stats={getStats(ship)}
+          />
+        </div>
       ))}
-      fetchData={function (): void {
-        throw new Error("Function not implemented.");
-      }}
+      fetchData={fetchData}
     />
   );
 };

@@ -24,6 +24,10 @@ export interface IShip {
   year_built: number;
 }
 
+export interface IShipWithType {
+  type: string;
+}
+
 export enum SHIP_VIEWS {
   List = "List",
   Gallery = "Gallery",
