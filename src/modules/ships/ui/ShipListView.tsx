@@ -1,8 +1,8 @@
 import React from "react";
-import { InfiniteScroll, GalleryCard } from "../../components";
-import { IShip } from "../../types";
-import { getStats } from "./ship-utils";
-import { useShipStyles } from "./styles";
+import { InfiniteScroll, GalleryCard } from "../../../shared_components";
+import { IShip } from "../types";
+import { getStats } from "../utils/ship-utils";
+import { useShipStyles } from "../styles";
 
 type ShipListViewProps = {
   fetchedAllShips: boolean;

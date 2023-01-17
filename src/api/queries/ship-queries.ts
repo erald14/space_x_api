@@ -1,16 +1,13 @@
 import { gql } from "@apollo/client";
 export const GET_SHIPS = gql`
-  query Ships($offset: Int, $limit: Int) {
-    ships(offset: $offset, limit: $limit) {
+  query Ships($offset: Int, $limit: Int, $find: ShipsFind) {
+    ships(offset: $offset, limit: $limit, find: $find) {
       id
       active
       image
       name
       type
-      model
       class
-      status
-      weight_kg
       year_built
     }
   }

@@ -1,5 +1,5 @@
 import "./App.css";
-import { Ships } from "./containers";
+import { Ships } from "./modules";
 
 function App() {
   return (
