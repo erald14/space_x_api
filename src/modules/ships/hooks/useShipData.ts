@@ -24,7 +24,6 @@ export const useShipData = (selectedType?: string | null) => {
     GET_SHIP_TYPES
   );
   const fetchMoreShips = (selectedShipType: string | null) => {
-    console.log(selectedShipType, "selectedType");
     if (data?.ships && !fetchedAllShips) {
       const filterVariable = selectedShipType
         ? { find: { type: selectedShipType } }
